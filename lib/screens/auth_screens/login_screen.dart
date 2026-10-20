@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onstagram/helpers/consts.dart';
 import 'package:onstagram/widgets/clickables/app_button.dart';
+import 'package:onstagram/widgets/inputs/app_input.dart';
 
 class LoginScreen extends StatefulWidget {
   const new({super.key});
@@ -10,33 +11,36 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AppButton(
-              btnColor: blueColor,
-              onPressed: () {},
-              label: "First",
-              isLoading: false,
-            ),
-            AppButton(
-              isLoading: true,
-              onPressed: () {},
-              label: "Second",
-              btnColor: Colors.grey,
-            ),
-            AppButton(onPressed: () {}, label: "Third", btnColor: Colors.red),
-            AppButton(
-              onPressed: () {},
-              label: "Fourth",
-              btnColor: Colors.white,
-              txtColor: blueColor,
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppInput(label: "Email", controller: emailController),
+              AppInput(label: "Username", controller: usernameController),
+              AppInput(label: "Name", controller: nameController),
+              AppInput(label: "Pasword", controller: passwordController),
+              AppInput(
+                label: "Password Confirmation",
+                controller: confirmPasswordController,
+              ),
+              AppButton(
+                btnColor: blueColor,
+                onPressed: () {},
+                label: "تسجيل دخول",
+                isLoading: false,
+              ),
+            ],
+          ),
         ),
       ),
     );

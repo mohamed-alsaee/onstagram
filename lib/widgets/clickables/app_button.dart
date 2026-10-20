@@ -75,7 +75,9 @@ class _AppButtonState extends State<AppButton> {
                       )
                     : Text(
                         widget.label,
-                        style: TextStyle(color: widget.txtColor ?? whiteColor),
+                        style: labelSmall.copyWith(
+                          color: widget.txtColor ?? whiteColor,
+                        ),
                       ),
               ),
             ],
