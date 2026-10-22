@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 // ------------------ API CONSTANTS ------------------
 
-String baseUrl = "";
-String studentApiKey = "";
+String baseUrl = "https://onstagramcourse.com";
+String studentApiKey = "onsk_i8k7Yhar2gO6KNsfSswUYkrqnIJcdUHNRrRFPUIO";
 
 // ------------------ COLORS CONSTANTS ------------------
 
@@ -61,4 +61,63 @@ TextStyle bodyMedium = GoogleFonts.cairo(
 TextStyle bodySmall = GoogleFonts.cairo(
   fontSize: 12,
   fontWeight: FontWeight.normal,
+);
+
+// ------------------ THEMES CONSTANTS ------------------
+
+ThemeData theme = ThemeData(
+  progressIndicatorTheme: ProgressIndicatorThemeData(
+    color: Colors.grey.withValues(alpha: 0.5),
+  ),
+  textTheme: TextTheme(
+    displayLarge: displayLarge,
+    displayMedium: displayMedium,
+    displaySmall: displaySmall,
+    labelLarge: labelLarge,
+    labelMedium: labelMedium,
+    labelSmall: labelSmall,
+    bodyLarge: bodyLarge,
+    bodyMedium: bodyMedium,
+    bodySmall: bodySmall,
+  ),
+
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(width: 1),
+    ),
+  ),
+  colorScheme: .fromSeed(seedColor: blueColor),
+);
+
+ThemeData darkTheme = ThemeData(
+  iconTheme: IconThemeData(color: Colors.white),
+  iconButtonTheme: IconButtonThemeData(
+    style: ButtonStyle(foregroundColor: WidgetStatePropertyAll(Colors.white)),
+  ),
+  appBarTheme: AppBarThemeData(backgroundColor: Colors.black),
+  scaffoldBackgroundColor: Colors.black,
+  progressIndicatorTheme: ProgressIndicatorThemeData(
+    color: Colors.grey.withValues(alpha: 0.5),
+  ),
+
+  textTheme: TextTheme(
+    displayLarge: displayLarge.copyWith(color: Colors.white),
+    displayMedium: displayMedium.copyWith(color: Colors.white),
+    displaySmall: displaySmall.copyWith(color: Colors.white),
+    labelLarge: labelLarge.copyWith(color: Colors.white),
+    labelMedium: labelMedium.copyWith(color: Colors.white),
+    labelSmall: labelSmall.copyWith(color: Colors.white),
+    bodyLarge: bodyLarge.copyWith(color: Colors.white),
+    bodyMedium: bodyMedium.copyWith(color: Colors.white),
+    bodySmall: bodySmall.copyWith(color: Colors.white),
+  ),
+
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: BorderSide(width: 1),
+    ),
+  ),
+  colorScheme: .fromSeed(seedColor: blueColor),
 );

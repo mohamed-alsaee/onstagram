@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:onstagram/helpers/functions.dart';
+import 'package:onstagram/main.dart';
+import 'package:onstagram/providers/dark_mode_provider.dart';
 import 'package:onstagram/screens/auth_screens/login_screen.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const new({super.key});
@@ -12,6 +15,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Provider.of<DarkModeProvider>(context, listen: false).getFromStorage();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   onComplete: (v) {
                     Navigator.pushReplacement(
                       context,
-                      CupertinoPageRoute(builder: (context) => LoginScreen()),
+                      CupertinoPageRoute(builder: (context) => ScreenRouter()),
                     );
                   },
                 )

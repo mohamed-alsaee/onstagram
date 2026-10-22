@@ -37,6 +37,9 @@ dependencies:
   flutter_animate:
   google_fonts: 
   emails_validator: 
+  http:
+  provider:
+  shared_preferences: 
 dev_dependencies:
   flutter_test:
     sdk: flutter
