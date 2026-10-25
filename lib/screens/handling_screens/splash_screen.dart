@@ -4,7 +4,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:onstagram/helpers/functions.dart';
 import 'package:onstagram/main.dart';
 import 'package:onstagram/providers/dark_mode_provider.dart';
-import 'package:onstagram/screens/auth_screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {

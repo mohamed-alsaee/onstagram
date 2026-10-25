@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool showPassword = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController(
-    text: "test@onstagram.comm",
+    text: "test@onstagram.com",
   );
   TextEditingController passwordController = TextEditingController(
     text: "password",
@@ -131,14 +131,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "fcm_token": "x",
                               })
                               .then((loginResult) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    backgroundColor: loginResult.first
-                                        ? greenColor
-                                        : redColor,
-                                    content: Text(loginResult.last),
-                                  ),
-                                );
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: loginResult.first
+                                          ? greenColor
+                                          : redColor,
+                                      content: Text(loginResult.last),
+                                    ),
+                                  );
+                                }
                               });
                         }
                       },

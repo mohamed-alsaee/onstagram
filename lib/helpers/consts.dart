@@ -66,6 +66,14 @@ TextStyle bodySmall = GoogleFonts.cairo(
 // ------------------ THEMES CONSTANTS ------------------
 
 ThemeData theme = ThemeData(
+  dialogTheme: DialogThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadiusGeometry.circular(16),
+    ),
+    titleTextStyle: labelLarge.copyWith(color: blackColor),
+    backgroundColor: whiteColor,
+    contentTextStyle: bodyMedium.copyWith(color: blackColor),
+  ),
   dividerColor: Colors.grey,
   progressIndicatorTheme: ProgressIndicatorThemeData(
     color: Colors.grey.withValues(alpha: 0.5),
@@ -92,6 +100,15 @@ ThemeData theme = ThemeData(
 );
 
 ThemeData darkTheme = ThemeData(
+  dialogTheme: DialogThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadiusGeometry.circular(16),
+    ),
+
+    titleTextStyle: labelLarge,
+    backgroundColor: const Color.fromARGB(255, 31, 31, 31),
+    contentTextStyle: bodyMedium,
+  ),
   dividerColor: Colors.white30,
 
   iconTheme: IconThemeData(color: Colors.white),

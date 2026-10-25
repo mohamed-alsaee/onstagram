@@ -1,7 +1,9 @@
 import 'package:emails_validator/emails_validator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:onstagram/helpers/consts.dart';
 import 'package:onstagram/helpers/functions.dart';
+import 'package:onstagram/main.dart';
 import 'package:onstagram/providers/auth_provider.dart';
 import 'package:onstagram/providers/dark_mode_provider.dart';
 import 'package:onstagram/widgets/clickables/app_button.dart';
@@ -180,8 +182,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                     AppButton(
                       btnColor: blueColor,
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {}
+                      onPressed: () async {
+                        if (formKey.currentState!.validate()) {
+                          if (availabe) {
+                            await authConsumer
+                                .register({
+                                  "name": nameController.text,
+                                  "username": usernameController.text,
+                                  "email": emailController.text,
+                                  "password": passwordController.text,
+                                  "fcm_token": "a",
+                                })
+                                .then((registerReult) {
+                                  if (context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        backgroundColor: registerReult.first
+                                            ? greenColor
+                                            : redColor,
+                                        content: Text(registerReult.last),
+                                      ),
+                                    );
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      CupertinoPageRoute(
+                                        builder: (context) => ScreenRouter(),
+                                      ),
+                                      (route) => false,
+                                    );
+                                  }
+                                });
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: redColor,
+                                content: Text(
+                                  "User name unavailabe choose another user name",
+                                ),
+                              ),
+                            );
+                          }
+                        }
                       },
                       label: "Sign Up",
                       isLoading: authConsumer.busy,
