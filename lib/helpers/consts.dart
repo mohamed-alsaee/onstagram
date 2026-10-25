@@ -66,6 +66,7 @@ TextStyle bodySmall = GoogleFonts.cairo(
 // ------------------ THEMES CONSTANTS ------------------
 
 ThemeData theme = ThemeData(
+  dividerColor: Colors.grey,
   progressIndicatorTheme: ProgressIndicatorThemeData(
     color: Colors.grey.withValues(alpha: 0.5),
   ),
@@ -91,6 +92,8 @@ ThemeData theme = ThemeData(
 );
 
 ThemeData darkTheme = ThemeData(
+  dividerColor: Colors.white30,
+
   iconTheme: IconThemeData(color: Colors.white),
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(foregroundColor: WidgetStatePropertyAll(Colors.white)),

@@ -51,7 +51,21 @@ class AuthProvider extends BaseProvider {
 
   // logout() {}
 
-  // checkusername() {}
+  Future<List> checkUsername(String un) async {
+    // if (un == "") return [];
+    setBusyMore(true);
+
+    final response = await api.get("/api/auth/check-username?username=$un");
+
+    var decodedData = json.decode(response.body);
+    if (response.statusCode == 200 && decodedData['data']['available']) {
+      setBusyMore(false);
+      return [true, decodedData['message']];
+    } else {
+      setBusyMore(false);
+      return [false, decodedData['message']];
+    }
+  }
 
   // updateUser() {}
 

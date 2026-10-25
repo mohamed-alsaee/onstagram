@@ -9,6 +9,7 @@ class BaseProvider with ChangeNotifier {
   bool failed = false;
   bool pagenating = false;
 
+
   void setBusy(bool value) {
     busy = value;
     notifyListeners();

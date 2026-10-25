@@ -1,8 +1,11 @@
 import 'package:emails_validator/emails_validator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:onstagram/helpers/consts.dart';
+import 'package:onstagram/helpers/functions.dart';
 import 'package:onstagram/providers/auth_provider.dart';
 import 'package:onstagram/providers/dark_mode_provider.dart';
+import 'package:onstagram/screens/auth_screens/register_screen.dart';
 import 'package:onstagram/widgets/clickables/app_button.dart';
 import 'package:onstagram/widgets/inputs/app_input.dart';
 import 'package:provider/provider.dart';
@@ -64,8 +67,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text("Login"),
+
+                    Image.asset(
+                      "assets/horizontalLogo.png",
+                      width: getSize(context).width * 0.5,
+                    ),
                     AppInput(
-                      label: "Email",
+                      customHint: "Email",
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       validator: (v) {
@@ -77,10 +86,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                         return null;
                       },
+                      onChanged: () {},
                     ),
 
                     AppInput(
-                      label: "Pasword",
+                      customHint: "Password",
+
                       controller: passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       validator: (v) {
@@ -106,6 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               : Icons.visibility,
                         ),
                       ),
+                      onChanged: () {},
                     ),
 
                     AppButton(
@@ -130,13 +142,44 @@ class _LoginScreenState extends State<LoginScreen> {
                               });
                         }
                       },
-                      label: "تسجيل دخول",
+                      label: "Login",
                       isLoading: authConsumer.busy,
                     ),
                   ],
                 ),
               ),
             ),
+          ),
+
+          bottomNavigationBar: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don’t have an account?",
+                    style: bodyMedium.copyWith(color: Colors.grey),
+                  ),
+
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => RegisterScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Sign up",
+                      style: labelSmall.copyWith(color: blueColor),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         );
       },
