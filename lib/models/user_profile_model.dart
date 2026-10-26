@@ -52,7 +52,7 @@ class UserProfileModel {
         email: json["email"],
         isDemo: json["is_demo"],
         photo: json["photo"],
-        bio: json["bio"],
+        bio: json["bio"], 
         role: json["role"],
         stats: Stats.fromJson(json["stats"]),
         highlights: List<Highlight>.from(json["highlights"].map((x) => Highlight.fromJson(x))),
