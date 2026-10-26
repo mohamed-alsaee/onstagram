@@ -13,7 +13,7 @@ class Api {
         "Accept": "application/json",
         // "content-type": "application/json",
         "X-Student-Api-Key": studentApiKey,
-        "Authorization": prefs.getString("user_token") ?? "",
+        "Authorization": "Bearer ${prefs.getString("user_token") ?? ""}",
       },
     );
 
@@ -38,7 +38,7 @@ class Api {
         "Accept": "application/json",
         // "content-type": "application/json",
         "X-Student-Api-Key": studentApiKey,
-        "Authorization": prefs.getString("user_token") ?? "",
+        "Authorization": "Bearer ${prefs.getString("user_token") ?? ""}",
       },
     );
     if (kDebugMode) {
@@ -61,7 +61,7 @@ class Api {
         "Accept": "application/json",
         // "content-type": "application/json",
         "X-Student-Api-Key": studentApiKey,
-        "Authorization": prefs.getString("user_token") ?? "",
+        "Authorization": "Bearer ${prefs.getString("user_token") ?? ""}",
       },
     );
     if (kDebugMode) {
@@ -84,7 +84,7 @@ class Api {
         "Accept": "application/json",
         // "content-type": "application/json",
         "X-Student-Api-Key": studentApiKey,
-        "Authorization": prefs.getString("user_token") ?? "",
+        "Authorization": "Bearer ${prefs.getString("user_token") ?? ""}",
       },
     );
     if (kDebugMode) {
