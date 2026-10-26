@@ -110,7 +110,6 @@ class AuthProvider extends BaseProvider {
     }
   }
 
-  // TODO WHY GET ME RETURN 401
   void getMe() async {
     setBusyMore(true);
 
