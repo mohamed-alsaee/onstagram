@@ -4,7 +4,7 @@ import 'package:onstagram/providers/auth_provider.dart';
 import 'package:onstagram/providers/dark_mode_provider.dart';
 import 'package:onstagram/screens/auth_screens/login_screen.dart';
 import 'package:onstagram/screens/handling_screens/splash_screen.dart';
-import 'package:onstagram/screens/main_screens/profile_screen.dart';
+import 'package:onstagram/screens/main_screens/tabs_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -59,7 +59,7 @@ class _ScreenRouterState extends State<ScreenRouter> {
     return Consumer<AuthProvider>(
       builder: (context, authConsumer, _) {
         return authConsumer.authStatus == AuthStatus.authenticated
-            ? ProfileScreen()
+            ? TabsScreen()
             : LoginScreen();
       },
     );

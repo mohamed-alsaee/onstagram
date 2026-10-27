@@ -132,7 +132,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             )
                           : SizedBox(),
                     ),
-
+  
                     AppInput(
                       customHint: "Email",
                       controller: emailController,

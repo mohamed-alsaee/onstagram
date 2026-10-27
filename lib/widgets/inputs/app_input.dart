@@ -18,6 +18,7 @@ class AppInput extends StatelessWidget {
     this.underWidget,
     this.showValue = true,
     required this.onChanged,
+    this.enabled = true,
   });
   final TextEditingController controller;
   final String? label;
@@ -32,6 +33,7 @@ class AppInput extends StatelessWidget {
   final Widget? underWidget;
   final bool? showValue;
   final Function onChanged;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +48,17 @@ class AppInput extends StatelessWidget {
               child: Text(label!, style: labelSmall),
             ),
           TextFormField(
+            enabled: enabled,
             // onEditingComplete: onEditingComplete(),
             // onFieldSubmitted: onEditingComplete(),
-              onChanged: (value) {
-                onChanged();
-              },
+            onChanged: (value) {
+              onChanged();
+            },
             obscureText: !showValue!,
             inputFormatters: <TextInputFormatter>[
               digitsOnly
                   ? FilteringTextInputFormatter.digitsOnly
-                  : FilteringTextInputFormatter.deny(" "),
+                  : FilteringTextInputFormatter.deny(""),
             ],
             validator: validator,
             keyboardType: keyboardType,

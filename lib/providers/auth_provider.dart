@@ -127,5 +127,20 @@ class AuthProvider extends BaseProvider {
     }
   }
 
-  // updateUser() {}
+  Future<List> updateUser(Map body, String userId) async {
+    setBusyMore(true);
+
+    final response = await api.put("/api/users/$userId", body);
+
+    if (response.statusCode == 200) {
+      getMe();
+      setBusyMore(false);
+      return [true, json.decode(response.body)['message']];
+    } else {
+      setBusyMore(false);
+      return [false, json.decode(response.body)['message']];
+    }
+  }
+
+  // updateUserImage() {}
 }

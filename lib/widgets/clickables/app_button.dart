@@ -14,6 +14,7 @@ class AppButton extends StatefulWidget {
     this.vPadding = 16,
     this.isLoading = false,
     this.enabled = true,
+    this.interialPadding = 16,
   });
   final Function onPressed;
   final String label;
@@ -24,6 +25,7 @@ class AppButton extends StatefulWidget {
   final double vPadding;
   final bool enabled;
   final bool isLoading;
+  final double interialPadding;
 
   @override
   State<AppButton> createState() => _AppButtonState();
@@ -46,19 +48,23 @@ class _AppButtonState extends State<AppButton> {
                 width: 1,
                 color: widget.withBorder
                     ? widget.txtColor ?? whiteColor
-                    : widget.btnColor,
+                    : widget.btnColor.withValues(
+                        alpha: widget.enabled ? 1 : 0.33,
+                      ),
               ),
             ),
           ),
-          backgroundColor: WidgetStatePropertyAll(widget.btnColor),
+          backgroundColor: WidgetStatePropertyAll(
+            widget.btnColor.withValues(alpha: widget.enabled ? 1 : 0.33),
+          ),
         ),
         onPressed: () {
-          if (widget.enabled || !widget.isLoading) {
+          if (widget.enabled && !widget.isLoading) {
             widget.onPressed();
           }
         },
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(widget.interialPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
