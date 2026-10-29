@@ -71,6 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   imageUrl: authConsumer.currentUser!.photo,
                                   width: getSize(context).width * 0.25,
                                   height: getSize(context).width * 0.25,
+                                  fit: BoxFit.cover,
                                   placeholder: (context, v) {
                                     return SizedBox(
                                       width: getSize(context).width * 0.25,

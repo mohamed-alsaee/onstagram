@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:onstagram/models/user_profile_model.dart';
 import 'package:onstagram/providers/base_provider.dart';
@@ -142,5 +143,19 @@ class AuthProvider extends BaseProvider {
     }
   }
 
-  // updateUserImage() {}
+  Future<List> updateUserImage(File file) async {
+    setBusyMore(true);
+
+    final response = await api.upload("/api/files", file, "avatar");
+
+    if (response.statusCode == 201) {
+      updateUser({
+        "photo": json.decode(response.body)["data"]['public_url'],
+      }, currentUser!.id.toString());
+
+      return [true, json.decode(response.body)["message"]];
+    } else {
+      return [false, json.decode(response.body)["message"]];
+    }
+  }
 }

@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:onstagram/helpers/consts.dart';
 import 'package:onstagram/helpers/functions.dart';
 import 'package:onstagram/models/user_profile_model.dart';
@@ -43,6 +45,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             child: Column(
               children: [
                 GestureDetector(
+                  onTap: () async {
+                    final picker = ImagePicker();
+                    // Pick an image.
+                    await picker.pickImage(source: ImageSource.gallery).then((
+                      file,
+                    ) {
+                      if (file != null) {
+                        authConsumer.updateUserImage(File(file.path));
+                      }
+                    });
+                  },
                   child: Column(
                     children: [
                       ClipRRect(
@@ -58,6 +71,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 imageUrl: authConsumer.currentUser!.photo,
                                 width: getSize(context).width * 0.25,
                                 height: getSize(context).width * 0.25,
+                                fit: BoxFit.cover,
+
                                 placeholder: (context, v) {
                                   return SizedBox(
                                     width: getSize(context).width * 0.25,
